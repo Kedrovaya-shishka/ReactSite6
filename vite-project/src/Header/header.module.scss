@@ -1,5 +1,6 @@
-$pink: #FFE7E7;
-$orange: #f7941d;
+$purple: #81008c;
+$btn-purple: #973499;
+$pink: #ffe7e7;
 $text: #2d2d2d;
 $text-muted: #999;
 $white: #ffffff;
@@ -19,35 +20,35 @@ $border: #e0e0e0;
 }
 
 .header {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 100;
-    background-color: $pink;
-    backdrop-filter: blur(6px);
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.07);
+    z-index: 20;
 
     .nav {
-        background: rgba(255, 255, 255, 0.95);
+        background: $white;
         border: none;
-        border-radius: 20px;
-        max-width: 85vw;
+        border-radius: 0 0 18px 18px;
+        max-width: 1200px;
+        width: 90%;
         margin: {
             left: auto;
             right: auto;
         }
-        height: 68px;
+        height: 70px;
         @include flex(space-between);
         padding: {
-            left: 28px;
-            right: 28px;
+            left: 36px;
+            right: 36px;
         }
+        box-shadow: 0 8px 28px rgba(196, 86, 200, 0.22);
 
         .logo {
             @include flex;
+
             img {
-                height: 36px;
+                height: 30px;
                 object-fit: contain;
             }
         }
@@ -55,16 +56,21 @@ $border: #e0e0e0;
         .menu {
             list-style: none;
             @include flex(center);
-            gap: 70px;
+            gap: 54px;
 
             li {
                 .link {
                     @extend %link-base;
                     color: $text;
+                    font-weight: 500;
 
+                    &:hover {
+                        color: $purple;
+                    }
                 }
 
                 .active {
+                    color: $purple;
                     font-weight: 600;
                 }
             }
@@ -72,26 +78,110 @@ $border: #e0e0e0;
 
         .actions {
             @include flex;
-            gap: 18px;
+            gap: 20px;
 
-            .register {
-                @extend %link-base;
-                background: none;
-                border: none;
-                padding: 0;
-                cursor: pointer;
-                font-weight: 500;
+            .auth {
+                @include flex;
+                gap: 4px;
 
+                .slash {
+                    color: $text;
+                    font-size: 15px;
+                }
+
+                .register,
+                .loginBtn {
+                    @extend %link-base;
+                    background: none;
+                    border: none;
+                    padding: 0;
+                    cursor: pointer;
+                    color: $text;
+                    font-weight: 500;
+
+                    &:hover {
+                        color: $purple;
+                    }
+                }
             }
 
-            .loginBtn {
-                @extend %link-base;
-                background: none;
-                border: none;
-                padding: 0;
+            .icons {
+                height: 22px;
+                object-fit: contain;
                 cursor: pointer;
-                font-weight: 500;
+            }
+        }
+    }
+}
 
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    @include flex(center, center);
+    z-index: 200;
+
+    .modal {
+        position: relative;
+        width: 360px;
+        background: $white;
+        border-radius: 16px;
+        padding: 32px 28px;
+        box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
+
+        .closeBtn {
+            position: absolute;
+            top: 14px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: $text-muted;
+            cursor: pointer;
+        }
+
+        h2 {
+            color: $purple;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+
+            input {
+                height: 42px;
+                padding: 0 14px;
+                border: 1px solid $border;
+                border-radius: 8px;
+                font-size: 14px;
+                font-family: inherit;
+                outline: none;
+
+                &:focus {
+                    border-color: $btn-purple;
+                }
+            }
+
+            .submitBtn {
+                height: 44px;
+                background: $btn-purple;
+                color: $white;
+                border: none;
+                border-radius: 8px;
+                font-size: 15px;
+                font-weight: 600;
+                font-family: inherit;
+                cursor: pointer;
+                transition: background 0.2s;
+
+                &:hover {
+                    background: $purple;
+                }
             }
         }
     }

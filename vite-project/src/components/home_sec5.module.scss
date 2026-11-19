@@ -1,0 +1,124 @@
+$purple: #81008c;
+$dot-active: #c768f0;
+$dot-muted: #dfdfdf;
+$text: #3a3a3a;
+$text-dark: #111111;
+$white: #ffffff;
+$bg: #fff7f7;
+$line: #9e9e9e;
+
+@mixin flex($justify: flex-start, $align: center) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+%section-heading {
+    width: 100%;
+    @include flex(center, center);
+    gap: 24px;
+
+    &::before,
+    &::after {
+        content: '';
+        flex: 1;
+        border-top: 1.5px dashed $line;
+    }
+
+    h2 {
+        color: $purple;
+        font-size: 38px;
+        font-weight: 800;
+        white-space: nowrap;
+    }
+}
+
+.Home_sec5 {
+    width: 100%;
+    height: 100vh;
+    background: $bg;
+    @include flex(center, center);
+
+    .container {
+        max-width: 1200px;
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .heading {
+            @extend %section-heading;
+            margin-bottom: 52px;
+        }
+
+        .cards {
+            width: 100%;
+            @include flex(space-between, stretch);
+            gap: 40px;
+
+            .card {
+                flex: 1;
+                background: $white;
+                border-radius: 14px;
+                padding: 36px 40px;
+                border-bottom: 3px solid rgba(235, 130, 240, 0.55);
+                box-shadow: 0 8px 26px rgba(210, 120, 215, 0.14);
+
+                .profile {
+                    @include flex(flex-start, center);
+                    gap: 22px;
+                    margin-bottom: 26px;
+
+                    .avatar {
+                        width: 72px;
+                        height: 72px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+
+                    .info {
+                        h3 {
+                            font-size: 22px;
+                            font-weight: 700;
+                            color: $text-dark;
+                            margin-bottom: 6px;
+                        }
+
+                        p {
+                            font-size: 14px;
+                            color: $text;
+                        }
+                    }
+                }
+
+                .review {
+                    font-size: 15px;
+                    color: $text;
+                    line-height: 1.65;
+                }
+            }
+        }
+
+        .dots {
+            @include flex(center, center);
+            gap: 8px;
+            margin-top: 30px;
+
+            .dot,
+            .dotActive {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+            }
+
+            .dot {
+                background: $dot-muted;
+            }
+
+            .dotActive {
+                background: $dot-active;
+            }
+        }
+    }
+}

@@ -1,0 +1,186 @@
+$purple: #81008c;
+$btn-purple: #973499;
+$dot-active: #c768f0;
+$dot-muted: #dfdfdf;
+$coral: #e35050;
+$text: #2d2d2d;
+$text-dark: #111111;
+$white: #ffffff;
+$bg: #fff7f7;
+$line: #9e9e9e;
+
+@mixin flex($justify: flex-start, $align: center) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+%section-heading {
+    width: 100%;
+    @include flex(center, center);
+    gap: 24px;
+
+    &::before,
+    &::after {
+        content: '';
+        flex: 1;
+        border-top: 1.5px dashed $line;
+    }
+
+    h2 {
+        color: $purple;
+        font-size: 38px;
+        font-weight: 800;
+        white-space: nowrap;
+    }
+}
+
+.Home_sec3 {
+    width: 100%;
+    height: 100vh;
+    background: $bg;
+    @include flex(center, center);
+
+    .container {
+        max-width: 1200px;
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .heading {
+            @extend %section-heading;
+            margin-bottom: 22px;
+        }
+
+        .seeAllRow {
+            width: 100%;
+            @include flex(flex-end, center);
+            margin-bottom: 18px;
+
+            span {
+                color: $coral;
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+            }
+        }
+
+        .cards {
+            width: 100%;
+            @include flex(space-between, stretch);
+            gap: 28px;
+
+            .card {
+                flex: 1;
+                background: $white;
+                border-radius: 14px;
+                padding: 16px 16px 22px;
+                box-shadow: 0 8px 26px rgba(0, 0, 0, 0.06);
+                display: flex;
+                flex-direction: column;
+
+                .imgWrap {
+                    position: relative;
+                    width: 100%;
+                    height: 220px;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    margin-bottom: 18px;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        display: block;
+                    }
+
+                    .heartBtn {
+                        position: absolute;
+                        top: 10px;
+                        right: 12px;
+                        background: none;
+                        border: none;
+                        font-size: 24px;
+                        line-height: 1;
+                        color: #3a3a4a;
+                        cursor: pointer;
+                        transition: transform 0.2s, color 0.2s;
+
+                        &:hover {
+                            transform: scale(1.1);
+                        }
+                    }
+
+                    .liked {
+                        color: $coral;
+                    }
+                }
+
+                h3 {
+                    font-size: 19px;
+                    font-weight: 700;
+                    color: $text-dark;
+                    margin-bottom: 10px;
+                }
+
+                .desc {
+                    font-size: 14px;
+                    color: $text;
+                    line-height: 1.55;
+                    margin-bottom: 26px;
+                }
+
+                .cardFooter {
+                    margin-top: auto;
+                    @include flex(space-between, center);
+
+                    .price {
+                        font-size: 20px;
+                        font-weight: 500;
+                        color: $text-dark;
+                    }
+
+                    .cartBtn {
+                        background: $btn-purple;
+                        color: $white;
+                        border: none;
+                        border-radius: 8px;
+                        padding: 10px 20px;
+                        font-size: 14px;
+                        font-weight: 600;
+                        font-family: inherit;
+                        cursor: pointer;
+                        transition: background 0.2s;
+
+                        &:hover {
+                            background: $purple;
+                        }
+                    }
+                }
+            }
+        }
+
+        .dots {
+            @include flex(center, center);
+            gap: 8px;
+            margin-top: 24px;
+
+            .dot,
+            .dotActive {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+            }
+
+            .dot {
+                background: $dot-muted;
+            }
+
+            .dotActive {
+                background: $dot-active;
+            }
+        }
+    }
+}
