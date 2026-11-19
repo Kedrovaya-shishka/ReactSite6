@@ -1,10 +1,8 @@
 $purple: #81008c;
 $btn-purple: #973499;
-$pink: #ffe7e7;
 $text: #2d2d2d;
 $text-muted: #999;
 $white: #ffffff;
-$border: #e0e0e0;
 
 @mixin flex($justify: flex-start, $align: center) {
     display: flex;
@@ -68,120 +66,16 @@ $border: #e0e0e0;
                         color: $purple;
                     }
                 }
-
-                .active {
-                    color: $purple;
-                    font-weight: 600;
-                }
             }
         }
 
         .actions {
             @include flex;
-            gap: 20px;
-
-            .auth {
-                @include flex;
-                gap: 4px;
-
-                .slash {
-                    color: $text;
-                    font-size: 15px;
-                }
-
-                .register,
-                .loginBtn {
-                    @extend %link-base;
-                    background: none;
-                    border: none;
-                    padding: 0;
-                    cursor: pointer;
-                    color: $text;
-                    font-weight: 500;
-
-                    &:hover {
-                        color: $purple;
-                    }
-                }
-            }
 
             .icons {
                 height: 22px;
                 object-fit: contain;
                 cursor: pointer;
-            }
-        }
-    }
-}
-
-.overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-    @include flex(center, center);
-    z-index: 200;
-
-    .modal {
-        position: relative;
-        width: 360px;
-        background: $white;
-        border-radius: 16px;
-        padding: 32px 28px;
-        box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
-
-        .closeBtn {
-            position: absolute;
-            top: 14px;
-            right: 16px;
-            background: none;
-            border: none;
-            font-size: 24px;
-            color: $text-muted;
-            cursor: pointer;
-        }
-
-        h2 {
-            color: $purple;
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-
-            input {
-                height: 42px;
-                padding: 0 14px;
-                border: 1px solid $border;
-                border-radius: 8px;
-                font-size: 14px;
-                font-family: inherit;
-                outline: none;
-
-                &:focus {
-                    border-color: $btn-purple;
-                }
-            }
-
-            .submitBtn {
-                height: 44px;
-                background: $btn-purple;
-                color: $white;
-                border: none;
-                border-radius: 8px;
-                font-size: 15px;
-                font-weight: 600;
-                font-family: inherit;
-                cursor: pointer;
-                transition: background 0.2s;
-
-                &:hover {
-                    background: $purple;
-                }
             }
         }
     }
